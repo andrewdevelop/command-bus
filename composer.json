@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "andrewdevelop/hex-contracts": "dev-master",
+        "andrewdevelop/hex-contracts": "^2.0",
         "illuminate/container": "^9.0",
         "illuminate/support": "^9.0",
         "php": "^8.0.2"
