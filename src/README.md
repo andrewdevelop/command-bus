@@ -1,5 +1,5 @@
 # andrewdevelop/command-bus
-This is a command bus library for Lumen or Laravel 6+. 
+This is a command bus library for Lumen or Laravel 9+. 
 The package provides infrastructure to execute reusable commands in your application: HTTP controllers, CLI, queues, etc., also it makes your code more readable and well organized.
 The service executes the required Command using in a Command Handler using a simple naming convention.
 
@@ -93,43 +93,9 @@ class CreateAccountCommandHandler implements CommandHandler
 }
 ```
 
-## Using middlewares
-To register additional middlewares globally we can do something like:
-```php
-<?php
-
-// Somewhere in a service provider, or in /bootstrap/app.php
-$this->app->resolving(\Core\Contracts\CommandBus::class, function ($bus, $app) {
-    $bus->middleware([
-        FixEmptyInputMiddleware::class,
-        ValidateCommandMiddleware::class,
-        // And a lot of things that are limited only by your imagination.
-    ]);
-});
-```
-
-Your handler must implement the `Core\Command\Middleware` interface and return an instance of `Core\Contracts\Command`.
-Middlewares will be applied before the command execution.
-```php
-<?php
-
-use Core\Command\Middleware;
-use Core\Contracts\Command;
-
-class SomeMiddleware implements Middleware 
-{
-    public function handle(Command $command)
-    {
-        // Any code that can modify, validate, log or anything with the command.
-        // And don't forget to return the command.
-        return $command;
-    }
-}
-``` 
-
 ### PS
-If the package was helpful, don't forget to buy a coffee for the developer. 
+If the package was helpful, don't forget to buy a coffee for the developer.  Thx.  
+
 <a href='https://ko-fi.com/andrewdevelop' target='_blank'>
   <img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 </a>
-Thx.

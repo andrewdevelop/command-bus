@@ -5,11 +5,10 @@ namespace Core\Command;
 use Exception;
 use Throwable;
 
-class HandlerResolutionException extends Exception
+final class HandlerResolutionException extends Exception
 {
-    public function __construct($class, $code = 0, Throwable $previous = null)
+    public function __construct(string $class, int $code = 0, Throwable $previous = null)
     {
-        $message = "Command handler \"$class\" not found.";
-        parent::__construct($message, $code, $previous);
+        parent::__construct("Command handler \"$class\" not found.", $code, $previous);
     }
 }
